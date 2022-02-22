@@ -18,6 +18,27 @@ export class CreateAccommodations1645237231556 implements MigrationInterface {
                         length: "50"
                     },
                     {
+                        name: "description",
+                        type: "varchar",
+                        length: "100",
+                        isNullable: true
+                    },
+                    {
+                        name: "arrival",
+                        type: "timestamp",
+                        isNullable: true
+                    },
+                    {
+                        name: "departure",
+                        type: "timestamp",
+                        isNullable: true
+                    },
+                    {
+                        name: "address",
+                        type: "varchar",
+                        isNullable: true 
+                    },
+                    {
                         name: "user_id",
                         type: "uuid"
                     },
@@ -32,18 +53,19 @@ export class CreateAccommodations1645237231556 implements MigrationInterface {
                     },
                     {
                         name: "updated_at",
-                        type: "timestamp"
+                        type: "timestamp",
+                        isNullable: true
                     }
                 ],
                 foreignKeys: [
                     {
-                        name: "fk_services_user",
+                        name: "fk_accommodations_user",
                         columnNames: ["user_id"],
                         referencedTableName: "users",
                         referencedColumnNames: ["id"]
                     },
                     {
-                        name: "fk_services_event",
+                        name: "fk_accommodations_event",
                         columnNames: ["event_id"],
                         referencedTableName: "events",
                         referencedColumnNames: ["id"]

@@ -19,7 +19,24 @@ export class CreateService1645237256808 implements MigrationInterface {
                     },
                     {
                         name: "description",
-                        type: "varchar"
+                        type: "varchar",
+                        length: "100",
+                        isNullable: true
+                    },
+                    {
+                        name: "arrival",
+                        type: "timestamp",
+                        isNullable: true
+                    },
+                    {
+                        name: "departure",
+                        type: "timestamp",
+                        isNullable: true
+                    },
+                    {
+                        name: "address",
+                        type: "varchar",
+                        isNullable: true 
                     },
                     {
                         name: "user_id",
@@ -36,7 +53,8 @@ export class CreateService1645237256808 implements MigrationInterface {
                     },
                     {
                         name: "updated_at",
-                        type: "timestamp"
+                        type: "timestamp",
+                        isNullable: true
                     }
                 ],
                 foreignKeys: [

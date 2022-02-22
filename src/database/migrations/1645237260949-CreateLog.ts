@@ -20,7 +20,13 @@ export class CreateLog1645237260949 implements MigrationInterface {
                     {
                         name: "description",
                         type: "varchar",
-                        length: "100"
+                        length: "100",
+                        isNullable: true
+                    },
+                    {
+                        name: "table",
+                        type: "varchar",
+                        length: '30'
                     },
                     {
                         name: "user_id",

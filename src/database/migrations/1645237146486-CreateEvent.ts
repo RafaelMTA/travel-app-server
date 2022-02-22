@@ -20,6 +20,15 @@ export class CreateEvent1645237146486 implements MigrationInterface {
                     {
                         name: "description",
                         type: "varchar",
+                        isNullable: true
+                    },
+                    {
+                        name: "start_date",
+                        type: "timestamp"
+                    },
+                    {
+                        name: "end_date",
+                        type: "timestamp"
                     },
                     {
                         name: "user_id",
@@ -32,7 +41,8 @@ export class CreateEvent1645237146486 implements MigrationInterface {
                     },
                     {
                         name: "updated_at",
-                        type: "timestamp"
+                        type: "timestamp",
+                        isNullable: true
                     }
                 ],
                 foreignKeys: [

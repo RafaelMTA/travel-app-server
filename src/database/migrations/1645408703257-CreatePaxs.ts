@@ -33,6 +33,10 @@ export class CreatePaxs1645408703257 implements MigrationInterface {
                         length: "50"
                     },
                     {
+                        name: "address",
+                        type: "varchar"
+                    },
+                    {
                         name: "birthday",
                         type: "timestamp"
                     },
@@ -51,7 +55,8 @@ export class CreatePaxs1645408703257 implements MigrationInterface {
                     },
                     {
                         name: "updated_at",
-                        type: "timestamp"
+                        type: "timestamp",
+                        isNullable: true
                     }
                 ],
                 foreignKeys: [
