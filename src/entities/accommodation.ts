@@ -1,9 +1,10 @@
 import { Entity, Column, CreateDateColumn, PrimaryColumn, JoinColumn, ManyToOne } from "typeorm";
 import crypto from "crypto";
 import { User } from "./user";
+import { Event } from "./event";
 
-@Entity('events')
-export class Event{
+@Entity('accommodations')
+export class Accommodation{
     @PrimaryColumn()
     id: string;
     @Column()
@@ -11,14 +12,21 @@ export class Event{
     @Column()
     description: string;
     @CreateDateColumn()
-    start_date: Date;
+    arrival: Date;
     @CreateDateColumn()
-    end_date: Date;
+    departure: Date;
+    @Column()
+    address:string;
     @Column()
     user_id: string;
     @ManyToOne(() => User)
     @JoinColumn({ name: "user_id" })
     user?: User;
+    @Column()
+    event_id: string;
+    @ManyToOne(() => Event)
+    @JoinColumn({ name: "event_id" })
+    event?: Event;
     @CreateDateColumn()
     created_at: Date;
     @CreateDateColumn()
@@ -28,16 +36,20 @@ export class Event{
         name:string, 
         description:string, 
         user_id:string, 
-        start_date: Date,
-        end_date: Date,
+        event_id:string,
+        arrival:Date,
+        departure:Date,
+        address:string,
         id?:string)
     {
         !id ? this.id = crypto.randomUUID() : this.id = id;
         this.name = name;
         this.description = description;
         this.user_id = user_id;
-        this.start_date = start_date;
-        this.end_date = end_date;
+        this.event_id = event_id;
+        this.arrival = arrival;
+        this.departure = departure;
+        this.address = address;
         this.created_at = new Date(Date.now());
     }
 }

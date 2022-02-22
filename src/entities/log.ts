@@ -1,8 +1,8 @@
 import { Entity, Column, CreateDateColumn, PrimaryColumn, JoinColumn, ManyToOne } from "typeorm";
-import crypto from "crypto";
 import { User } from "./user";
+import crypto from "crypto";
 
-@Entity('events')
+@Entity('logs')
 export class Event{
     @PrimaryColumn()
     id: string;
@@ -10,10 +10,8 @@ export class Event{
     name: string;
     @Column()
     description: string;
-    @CreateDateColumn()
-    start_date: Date;
-    @CreateDateColumn()
-    end_date: Date;
+    @Column()
+    table: string;
     @Column()
     user_id: string;
     @ManyToOne(() => User)
@@ -27,17 +25,15 @@ export class Event{
     constructor(
         name:string, 
         description:string, 
+        table:string,
         user_id:string, 
-        start_date: Date,
-        end_date: Date,
         id?:string)
     {
         !id ? this.id = crypto.randomUUID() : this.id = id;
         this.name = name;
         this.description = description;
+        this.table = table;
         this.user_id = user_id;
-        this.start_date = start_date;
-        this.end_date = end_date;
         this.created_at = new Date(Date.now());
     }
 }
