@@ -29,7 +29,8 @@ export class CreateUsers1645233595419 implements MigrationInterface {
                     },
                     {
                         name: "updated_at",
-                        type: "timestamp"
+                        type: "timestamp",
+                        isNullable: true
                     }
                 ]
             })
@@ -39,5 +40,4 @@ export class CreateUsers1645233595419 implements MigrationInterface {
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable("users");
     }
-
 }

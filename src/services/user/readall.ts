@@ -5,7 +5,6 @@ export class UserReadAllService{
     execute = async() : Promise<User[] | Error> => {
         try{
             const repository = getRepository(User);
-
             if(!repository) return new Error('Error on User Repository');
     
             const users = await repository.find();
@@ -13,7 +12,7 @@ export class UserReadAllService{
     
             return users;
         }catch(error){
-            return new Error();
+            return new Error(`${error}`);
         }
     }
 }

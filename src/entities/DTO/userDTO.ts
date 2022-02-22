@@ -1,15 +1,10 @@
-export type UserDTO = {
+export class UserDTO {
     email: string;
-    password: string;
+    created_at?: Date;
     updated_at?: Date;
+
+    constructor(email: string){
+        this.email = email;
+    }
 }
 
-// export class UserDTO{
-//     protected email;
-//     protected password;
-
-//     constructor(email: string, password: string){
-//         this.email = email;
-//         this.password = password;
-//     }
-// }

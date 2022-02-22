@@ -21,7 +21,7 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_DB: develop
+      POSTGRES_DB: travelapp
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: secret
       PGDATA: /var/lib/postgresql/data

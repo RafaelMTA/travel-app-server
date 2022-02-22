@@ -14,7 +14,7 @@ export class UserReadService{
     
             return user;
         }catch(error){
-            return new Error();
+            return new Error(`${error}`);
         }
     }
 }

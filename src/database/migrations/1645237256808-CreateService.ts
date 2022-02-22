@@ -15,8 +15,7 @@ export class CreateService1645237256808 implements MigrationInterface {
                     {
                         name: "name",
                         type: "varchar",
-                        length: "100",
-                        isUnique: true
+                        length: "100"
                     },
                     {
                         name: "description",

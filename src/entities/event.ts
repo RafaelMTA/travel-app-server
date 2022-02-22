@@ -1,4 +1,4 @@
-import { Entity, Column, CreateDateColumn, PrimaryColumn, ManyToMany, JoinColumn, ManyToOne } from "typeorm";
+import { Entity, Column, CreateDateColumn, PrimaryColumn, JoinColumn, ManyToOne } from "typeorm";
 import crypto from "crypto";
 import { User } from "./user";
 

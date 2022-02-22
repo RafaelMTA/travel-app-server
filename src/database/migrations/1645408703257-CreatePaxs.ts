@@ -1,11 +1,11 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateTransport1645237184579 implements MigrationInterface {
+export class CreatePaxs1645408703257 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "transports",
+                name: "paxs",
                 columns: [
                     {
                         name: "id",
@@ -18,8 +18,27 @@ export class CreateTransport1645237184579 implements MigrationInterface {
                         length: "50"
                     },
                     {
+                        name: "surname",
+                        type: "varchar",
+                        length: "50"
+                    },
+                    {
+                        name: "email",
+                        type: "varchar",
+                        length: "100"
+                    },
+                    {
+                        name: "occupation",
+                        type: "varchar",
+                        length: "50"
+                    },
+                    {
+                        name: "birthday",
+                        type: "timestamp"
+                    },
+                    {
                         name: "user_id",
-                        type: "uuid"
+                        type: "uuid",
                     },
                     {
                         name: "event_id",
@@ -37,13 +56,13 @@ export class CreateTransport1645237184579 implements MigrationInterface {
                 ],
                 foreignKeys: [
                     {
-                        name: "fk_services_user",
+                        name: "fk_paxs_user",
                         columnNames: ["user_id"],
                         referencedTableName: "users",
                         referencedColumnNames: ["id"]
                     },
                     {
-                        name: "fk_services_event",
+                        name: "fk_paxs_event",
                         columnNames: ["event_id"],
                         referencedTableName: "events",
                         referencedColumnNames: ["id"]
@@ -54,7 +73,7 @@ export class CreateTransport1645237184579 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("transports");
+        await queryRunner.dropTable("paxs");
     }
 
 }

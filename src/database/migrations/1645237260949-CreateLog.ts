@@ -13,23 +13,31 @@ export class CreateLog1645237260949 implements MigrationInterface {
                         isPrimary: true
                     },
                     {
-                        name: "email",
+                        name: "name",
                         type: "varchar",
-                        length: "50",
-                        isUnique: true
+                        length: "50"
                     },
                     {
-                        name: "password",
+                        name: "description",
                         type: "varchar",
+                        length: "100"
+                    },
+                    {
+                        name: "user_id",
+                        type: "uuid",
                     },
                     {
                         name: "created_at",
                         type: "timestamp",
                         default: "now()"
-                    },
+                    }
+                ],
+                foreignKeys: [
                     {
-                        name: "updated_at",
-                        type: "timestamp"
+                        name: "fk_logs_user",
+                        columnNames: ["user_id"],
+                        referencedTableName: "users",
+                        referencedColumnNames: ["id"]
                     }
                 ]
             })

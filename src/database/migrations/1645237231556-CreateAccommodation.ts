@@ -13,14 +13,17 @@ export class CreateAccommodations1645237231556 implements MigrationInterface {
                         isPrimary: true
                     },
                     {
-                        name: "email",
+                        name: "name",
                         type: "varchar",
-                        length: "50",
-                        isUnique: true
+                        length: "50"
                     },
                     {
-                        name: "password",
-                        type: "varchar",
+                        name: "user_id",
+                        type: "uuid"
+                    },
+                    {
+                        name: "event_id",
+                        type: "uuid"
                     },
                     {
                         name: "created_at",
@@ -30,6 +33,20 @@ export class CreateAccommodations1645237231556 implements MigrationInterface {
                     {
                         name: "updated_at",
                         type: "timestamp"
+                    }
+                ],
+                foreignKeys: [
+                    {
+                        name: "fk_services_user",
+                        columnNames: ["user_id"],
+                        referencedTableName: "users",
+                        referencedColumnNames: ["id"]
+                    },
+                    {
+                        name: "fk_services_event",
+                        columnNames: ["event_id"],
+                        referencedTableName: "events",
+                        referencedColumnNames: ["id"]
                     }
                 ]
             })

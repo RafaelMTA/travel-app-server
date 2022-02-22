@@ -10,7 +10,7 @@ export class UserDeleteService{
     
             await repository.delete({id});
         }catch(error){
-            return new Error();
+            return new Error(`${error}`);
         }
     }
 }
