@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { UserCreateService } from '../../services/user/create';
+import { UserCreateService } from '@services/user/create';
 
 export class UserCreateController{
     handle = async(req: Request, res: Response) : Promise<Response> => {
@@ -11,6 +11,6 @@ export class UserCreateController{
 
         if(result instanceof Error) return res.status(400).json(result.message);
 
-        return res.json(result);
+        return res.status(200).json(result);
     }
 }

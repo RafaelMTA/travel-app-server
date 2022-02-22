@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
-import { UserDeleteService } from '../../services/user/delete';
+import { EventDeleteService } from '@services/event/delete';
 
-export class UserDeleteController{
+export class EventDeleteController{
     handle = async(req: Request, res: Response) : Promise<Response> => {
-        const {id} = req.params;
+        const {event_id} = req.params;
 
-        const service = new UserDeleteService();
+        const service = new EventDeleteService();
 
-        const result = await service.execute(id);
+        const result = await service.execute(event_id);
 
         if(result instanceof Error) return res.status(400).json(result.message);
 
