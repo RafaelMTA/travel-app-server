@@ -1,12 +1,12 @@
 import { getRepository } from "typeorm";
-import { Event } from "@entities/event";
+import { Accommodation } from "@entities/accommodation";
 
-export class EventDeleteService{
+export class AccommodationDeleteService{
     execute = async(id:string) : Promise<Error | void> => {
         try{
-            const repository = getRepository(Event);
+            const repository = getRepository(Accommodation);
             if(!repository) return new Error('No repository found');
-            if(!(await repository.findOne({id}))) return new Error('No event found'); 
+            if(!(await repository.findOne({id}))) return new Error('No accommodation found'); 
     
             await repository.delete({id});
         }catch(error){

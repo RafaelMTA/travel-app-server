@@ -1,5 +1,5 @@
-import { getRepository } from "typeorm";
 import { User } from "@entities/user";
+import { getRepository } from "typeorm";
 
 export class UserDeleteService{
     execute = async(id:string) : Promise<Error | void> => {

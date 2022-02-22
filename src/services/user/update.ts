@@ -1,5 +1,5 @@
-import { User } from "@entities/user";
 import { getRepository } from "typeorm";
+import { User } from "@entities/user";
 import BCryptjs from "@handlers/BCryptjs";
 
 type UserRequest = {
@@ -12,12 +12,14 @@ export class UserUpdateService{
         try{
             const repository = getRepository(User);   
             if(!repository) return new Error('No repository found');
-    
-            const exists = await repository.findOne(email);
-            if(exists) return new Error('User already registed');
 
             const user = await repository.findOne(id);
-            if(!user) return new Error('User not found');
+            if(!user) return new Error('No user found');
+
+            if(user.email !== email) {
+                const exists = await repository.findOne({email});
+                if(exists) return new Error('User already registed');
+            } 
 
             //Check if password is the same
             const validate = await BCryptjs.validate(password, user.password);

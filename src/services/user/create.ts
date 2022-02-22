@@ -1,6 +1,5 @@
 import { getRepository } from "typeorm"
 import { User } from "@entities/user";
-import { UserDTO } from "@entities/DTO/userDTO";
 import BCryptjs from "@handlers/BCryptjs";
 
 type UserRequest = {
