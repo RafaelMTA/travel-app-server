@@ -1,13 +1,13 @@
 import "dotenv/config";
 import jwt, { Jwt } from "jsonwebtoken";
+import auth from "@config/auth";
 
 export class JWTToken{
-    generateToken = async(payload:object) : Promise<string | undefined | Error> => {
+    generateToken = async(payload:object) : Promise<string | Error> => {
         try{
-            const token = await jwt.sign(payload, process.env.JWT_SECRET,{
-                expiresIn: process.env.JWT_EXPIRESIN,
-                algorithm: process.env.JWT_ALGORITHM,
-                issuer: process.env.JWT_ISSUER
+            const token = await jwt.sign(payload, auth.secret, {
+                expiresIn: auth.expiresIn,
+                issuer: auth.issuer
             });
             return token;
         }catch(error){
@@ -17,9 +17,9 @@ export class JWTToken{
 
     validateToken = async(token:string) : Promise<Jwt | Error>=> {
         try{
-            return await jwt.verify(token, process.env.JWT_SECRET, {
-                algorithms: process.env.JWT_ALGORITHM,
-                issuer: process.env.JWT_ISSUER
+            return await jwt.verify(token, auth.secret, {
+                algorithms: ["HS256"],
+                issuer: auth.issuer
             });
         }catch(error){
             return new Error(`${error}`);

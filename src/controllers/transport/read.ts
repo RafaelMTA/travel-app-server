@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
-import { EventUserReadService } from "@services/event/read";
+import { TransportReadService } from "@services/transport/read";
 
-export class EventUserReadController{
+export class TransportReadController{
     handle = async(req: Request, res: Response) : Promise<Response>=> {
-        const { event_id } = req.params;
+        const { transport_id } = req.params;
 
-        const service = new EventUserReadService();
+        const service = new TransportReadService();
 
-        const result = await service.execute(event_id);
+        const result = await service.execute(transport_id);
 
         if(result instanceof Error) return res.status(400).json(result.message);
 

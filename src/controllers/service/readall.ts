@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { TransportReadAllService } from "@services/transport/readall";
+import { ServiceReadAllService } from "@services/service/readall";
 
-export class TransportReadAllController{
+export class ServiceReadAllController{
     handle = async(req: Request, res: Response) : Promise<Response> => {
-        const service = new TransportReadAllService();
+        const service = new ServiceReadAllService();
         
         const result = await service.execute();
 

@@ -4,14 +4,15 @@ import { Accommodation } from "@entities/accommodation";
 type AccommodationRequest = {
     name: string;
     description: string;
-    arrival: Date,
-    departure: Date,
+    arrival: Date;
+    departure: Date;
+    address: string;
     user_id: string;
     event_id: string;
 }
 
 export class AccommodationUpdateService{
-    execute = async({name, description, arrival, departure, user_id, event_id} : AccommodationRequest, id:string) : Promise<Accommodation | Error> => {
+    execute = async({name, description, arrival, departure, address, user_id, event_id} : AccommodationRequest, id:string) : Promise<Accommodation | Error> => {
         // if(start_date < new Date(Date.now())) return new Error('Invalid starting date');
         // console.log(start_date > new Date(Date.now()));
 
@@ -30,6 +31,7 @@ export class AccommodationUpdateService{
         accommodation.description = description;
         accommodation.arrival = arrival;
         accommodation.departure = departure;
+        accommodation.address = address;
         accommodation.updated_at = new Date(Date.now());
         
         repository.save(accommodation);

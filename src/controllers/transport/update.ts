@@ -1,14 +1,14 @@
 import { Request, Response } from "express";
-import { EventUserUpdateService } from "@services/event/update";
+import { TransportUpdateService } from "@services/transport/update";
 
-export class EventUserUpdateController{
+export class TransportUpdateController{
     handle = async(req: Request, res: Response) : Promise<Response> => {
-        const { user_id, event_id } = req.params;
-        const { name } = req.body;
+        const { user_id, event_id, transportation_id } = req.params;
+        const { name, description, arrival, departure, address } = req.body;
 
-        const service = new EventUserUpdateService();
+        const service = new TransportUpdateService();
 
-        const result = await service.execute({name, user_id}, event_id);
+        const result = await service.execute({ name, description, arrival, departure, address, user_id, event_id }, transportation_id);
 
         if(result instanceof Error) return res.status(400).json(result.message);
 

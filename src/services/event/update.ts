@@ -4,8 +4,8 @@ import { Event } from "@entities/event";
 type EventRequest = {
     name: string;
     description: string;
-    start_date: Date,
-    end_date: Date,
+    start_date: Date;
+    end_date: Date;
     user_id: string;
 }
 

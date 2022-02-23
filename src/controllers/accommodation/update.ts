@@ -4,11 +4,11 @@ import { AccommodationUpdateService } from "@services/accommodation/update";
 export class AccommodationUpdateController{
     handle = async(req: Request, res: Response) : Promise<Response> => {
         const { user_id, event_id, accommodation_id } = req.params;
-        const { name, description, arrival, departure } = req.body;
+        const { name, description, arrival, departure, address } = req.body;
 
         const service = new AccommodationUpdateService();
 
-        const result = await service.execute({ name, description, arrival, departure, user_id, event_id }, accommodation_id);
+        const result = await service.execute({ name, description, arrival, departure, address, user_id, event_id }, accommodation_id);
 
         if(result instanceof Error) return res.status(400).json(result.message);
 
