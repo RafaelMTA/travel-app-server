@@ -13,13 +13,10 @@ type ServiceRequest = {
 
 export class ServiceUpdateService{
     execute = async({name, description, arrival, departure, address, user_id, event_id} : ServiceRequest, id:string) : Promise<Service | Error> => {
-        // if(start_date < new Date(Date.now())) return new Error('Invalid starting date');
-        // console.log(start_date > new Date(Date.now()));
-
         const repository = getRepository(Service);   
         if(!repository) return new Error('No repository found');
 
-        const service = await repository.findOne(id);
+        const service = await repository.findOne({user_id, id});
         if(!service) return new Error('No service found');
 
         if(service.name !== name) {

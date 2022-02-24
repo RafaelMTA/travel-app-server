@@ -13,8 +13,6 @@ type TransportRequest = {
 
 export class TransportCreateService{
     execute = async({name, description, arrival, departure, address, user_id, event_id} : TransportRequest) : Promise<Transport | Error> => {
-        // if(start_date < new Date(Date.now())) return new Error('Invalid starting date');
-
         const repository = getRepository(Transport);
         if(!repository) return new Error('No repository found');
 

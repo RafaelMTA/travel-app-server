@@ -14,13 +14,10 @@ type PaxRequest = {
 
 export class PaxUpdateService{
     execute = async({name, surname, email, occupation, address, birthday, user_id, event_id} : PaxRequest, id:string) : Promise<Pax | Error> => {
-        // if(start_date < new Date(Date.now())) return new Error('Invalid starting date');
-        // console.log(start_date > new Date(Date.now()));
-
         const repository = getRepository(Pax);   
         if(!repository) return new Error('No repository found');
 
-        const pax = await repository.findOne(id);
+        const pax = await repository.findOne({user_id, id});
         if(!pax) return new Error('No pax found');
 
         if(pax.email !== email) {

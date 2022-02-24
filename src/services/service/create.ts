@@ -13,8 +13,6 @@ type ServiceRequest = {
 
 export class ServiceCreateService{
     execute = async({name, description, arrival, departure, address, user_id, event_id} : ServiceRequest) : Promise<Service | Error> => {
-        // if(start_date < new Date(Date.now())) return new Error('Invalid starting date');
-
         const repository = getRepository(Service);
         if(!repository) return new Error('No repository found');
 

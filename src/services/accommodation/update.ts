@@ -13,13 +13,10 @@ type AccommodationRequest = {
 
 export class AccommodationUpdateService{
     execute = async({name, description, arrival, departure, address, user_id, event_id} : AccommodationRequest, id:string) : Promise<Accommodation | Error> => {
-        // if(start_date < new Date(Date.now())) return new Error('Invalid starting date');
-        // console.log(start_date > new Date(Date.now()));
-
         const repository = getRepository(Accommodation);   
         if(!repository) return new Error('No repository found');
 
-        const accommodation = await repository.findOne(id);
+        const accommodation = await repository.findOne({user_id, id});
         if(!accommodation) return new Error('No accommodation found');
 
         if(accommodation.name !== name) {

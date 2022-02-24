@@ -11,9 +11,6 @@ type EventRequest = {
 
 export class EventUpdateService{
     execute = async({name, description, start_date, end_date, user_id} : EventRequest, id:string) : Promise<Event | Error> => {
-        // if(start_date < new Date(Date.now())) return new Error('Invalid starting date');
-        // console.log(start_date > new Date(Date.now()));
-
         const repository = getRepository(Event);   
         if(!repository) return new Error('No repository found');
 
