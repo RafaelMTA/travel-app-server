@@ -44,11 +44,11 @@ import { TransportReadController } from "@controllers/transport/read";
 import { TransportUpdateController } from "@controllers/transport/update";
 import { TransportDeleteController } from "@controllers/transport/delete";
 
-routes.get("/api/users/:user_id/event/:event_id/transport", new TransportReadAllController().handle);
-routes.post("/api/users/:user_id/event/:event_id/transport", new TransportCreateController().handle);
-routes.get("/api/users/:user_id/event/:event_id/transport/:transport_id", new TransportReadController().handle);
-routes.put("/api/users/:user_id/event/:event_id/transport/:transport_id", new TransportUpdateController().handle);
-routes.delete("/api/users/:user_id/event/:event_id/transport/:transport_id", new TransportDeleteController().handle);
+routes.get("/api/event/:event_id/transport", new TransportReadAllController().handle);
+routes.post("/api/event/:event_id/transport", new TransportCreateController().handle);
+routes.get("/api/event/:event_id/transport/:transport_id", new TransportReadController().handle);
+routes.put("/api/event/:event_id/transport/:transport_id", new TransportUpdateController().handle);
+routes.delete("/api/event/:event_id/transport/:transport_id", new TransportDeleteController().handle);
 //#endregion
 
 //#region Accommodation Routes
@@ -58,11 +58,11 @@ import { AccommodationReadController } from "@controllers/accommodation/read";
 import { AccommodationUpdateController } from "@controllers/accommodation/update";
 import { AccommodationDeleteController } from "@controllers/accommodation/delete";
 
-routes.get("/api/users/:user_id/event/:event_id/accommodation", new AccommodationReadAllController().handle);
-routes.post("/api/users/:user_id/event/:event_id/accommodation", new AccommodationCreateController().handle);
-routes.get("/api/users/:user_id/event/:event_id/accommodation/:accommodation_id", new AccommodationReadController().handle);
-routes.put("/api/users/:user_id/event/:event_id/accommodation/:accommodation_id", new AccommodationUpdateController().handle);
-routes.delete("/api/users/:user_id/event/:event_id/accommodation/:accommodation_id", new AccommodationDeleteController().handle);
+routes.get("/api/event/:event_id/accommodation", new AccommodationReadAllController().handle);
+routes.post("/api/event/:event_id/accommodation", new AccommodationCreateController().handle);
+routes.get("/api/event/:event_id/accommodation/:accommodation_id", new AccommodationReadController().handle);
+routes.put("/api/event/:event_id/accommodation/:accommodation_id", new AccommodationUpdateController().handle);
+routes.delete("/api/event/:event_id/accommodation/:accommodation_id", new AccommodationDeleteController().handle);
 //#endregion
 
 //#region Transport Routes
@@ -72,11 +72,11 @@ import { ServiceReadController } from "@controllers/service/read";
 import { ServiceUpdateController } from "@controllers/service/update";
 import { ServiceDeleteController } from "@controllers/service/delete";
 
-routes.get("/api/users/:user_id/event/:event_id/service", new ServiceReadAllController().handle);
-routes.post("/api/users/:user_id/event/:event_id/service", new ServiceCreateController().handle);
-routes.get("/api/users/:user_id/event/:event_id/service/:service_id", new ServiceReadController().handle);
-routes.put("/api/users/:user_id/event/:event_id/service/:service_id", new ServiceUpdateController().handle);
-routes.delete("/api/users/:user_id/event/:event_id/service/:service_id", new ServiceDeleteController().handle);
+routes.get("/api/event/:event_id/service", new ServiceReadAllController().handle);
+routes.post("/api/event/:event_id/service", new ServiceCreateController().handle);
+routes.get("/api/event/:event_id/service/:service_id", new ServiceReadController().handle);
+routes.put("/api/event/:event_id/service/:service_id", new ServiceUpdateController().handle);
+routes.delete("/api/event/:event_id/service/:service_id", new ServiceDeleteController().handle);
 //#endregion
 
 //#region Pax Routes
@@ -86,11 +86,11 @@ import { PaxReadController } from "@controllers/pax/read";
 import { PaxUpdateController } from "@controllers/pax/update";
 import { PaxDeleteController } from "@controllers/pax/delete";
 
-routes.get("/api/users/:user_id/event/:event_id/pax", new PaxReadAllController().handle);
-routes.post("/api/users/:user_id/event/:event_id/pax", new PaxCreateController().handle);
-routes.get("/api/users/:user_id/event/:event_id/pax/:pax_id", new PaxReadController().handle);
-routes.put("/api/users/:user_id/event/:event_id/pax/:pax_id", new PaxUpdateController().handle);
-routes.delete("/api/users/:user_id/event/:event_id/pax/:pax_id", new PaxDeleteController().handle);
+routes.get("/api/event/:event_id/pax", new PaxReadAllController().handle);
+routes.post("/api/event/:event_id/pax", new PaxCreateController().handle);
+routes.get("/api/event/:event_id/pax/:pax_id", new PaxReadController().handle);
+routes.put("/api/event/:event_id/pax/:pax_id", new PaxUpdateController().handle);
+routes.delete("/api/event/:event_id/pax/:pax_id", new PaxDeleteController().handle);
 //#endregion
 
 //#region Auth Routes

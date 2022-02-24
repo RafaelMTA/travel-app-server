@@ -1,8 +1,20 @@
 import 'dotenv/config';
+import jwt from "jsonwebtoken";
 
-export default {
+type authConfig = {
+    secret: string;
+    issuer: string;
+    algorithm: jwt.Algorithm[];
+    expiresIn: string;
+}
+
+let config : authConfig = {
     secret: process.env.JWT_SECRET,
     issuer: process.env.JWT_ISSUER,
-    algorithm: process.env.JWT_ALGORITHM || 'HS256',
+    algorithm: ['HS256'],
     expiresIn: '1d'
+}
+
+export default {
+    config
 }

@@ -1,28 +1,27 @@
 import "dotenv/config";
-import jwt, { Jwt } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import auth from "@config/auth";
 
-export class JWTToken{
-    generateToken = async(payload:object) : Promise<string | Error> => {
-        try{
-            const token = await jwt.sign(payload, auth.secret, {
-                expiresIn: auth.expiresIn,
-                issuer: auth.issuer
-            });
-            return token;
-        }catch(error){
-            return new Error(`${error}`);
-        }      
-    }
+const generateToken = async(payload:object) => {
+    try{
+        return await jwt.sign(payload, auth.config.secret, {
+            expiresIn: auth.config.expiresIn,
+            issuer: auth.config.issuer
+        });
+    }catch(error){
+        return new Error(`${error}`);
+    }      
+}
 
-    validateToken = async(token:string) : Promise<Jwt | Error>=> {
-        try{
-            return await jwt.verify(token, auth.secret, {
-                algorithms: ["HS256"],
-                issuer: auth.issuer
-            });
-        }catch(error){
-            return new Error(`${error}`);
-        }
+const validateToken = async(token:string) => {
+    try{
+        return await jwt.verify(token, auth.config.secret, {
+            algorithms: auth.config.algorithm,
+            issuer: auth.config.issuer
+        });
+    }catch(error){
+        return new Error(`${error}`);
     }
 }
+
+export default { generateToken, validateToken }
