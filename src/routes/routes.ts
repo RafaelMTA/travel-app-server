@@ -3,6 +3,12 @@ import {Router} from "express";
 const routes = Router();
 //#endregion
 
+//#region Auth Middleware
+import auth from "@middlewares/auth";
+
+routes.use(auth);
+//#endregion
+
 //#region User Routes
 import { UserReadAllController } from "@controllers/user/readall";
 import { UserCreateController } from "@controllers/user/create";
@@ -24,11 +30,11 @@ import { EventReadController } from "@controllers/event/read";
 import { EventUpdateController } from "@controllers/event/update";
 import { EventDeleteController } from "@controllers/event/delete";
 
-routes.get("/api/users/:user_id/event", new EventReadAllController().handle);
-routes.post("/api/users/:user_id/event", new EventCreateController().handle);
-routes.get("/api/users/:user_id/event/:event_id", new EventReadController().handle);
-routes.put("/api/users/:user_id/event/:event_id", new EventUpdateController().handle);
-routes.delete("/api/users/:user_id/event/:event_id", new EventDeleteController().handle);
+routes.get("/api/event", new EventReadAllController().handle);
+routes.post("/api/event", new EventCreateController().handle);
+routes.get("/api/event/:event_id", new EventReadController().handle);
+routes.put("/api/event/:event_id", new EventUpdateController().handle);
+routes.delete("/api/event/:event_id", new EventDeleteController().handle);
 //#endregion
 
 //#region Transport Routes
@@ -87,4 +93,9 @@ routes.put("/api/users/:user_id/event/:event_id/pax/:pax_id", new PaxUpdateContr
 routes.delete("/api/users/:user_id/event/:event_id/pax/:pax_id", new PaxDeleteController().handle);
 //#endregion
 
+//#region Auth Routes
+import { SignInController } from "@controllers/auth/SignIn";
+
+routes.post("/api/signin", new SignInController().handle);
+//#endregion
 export default routes;
