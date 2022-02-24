@@ -5,9 +5,12 @@ export class AccommodationReadController{
     handle = async(req: Request, res: Response) : Promise<Response>=> {
         const { accommodation_id } = req.params;
 
+        const user_id = res.locals.userId;
+        if(!user_id) return res.status(404).json({error: 'No user auth'});
+
         const service = new AccommodationReadService();
 
-        const result = await service.execute(accommodation_id);
+        const result = await service.execute(user_id, accommodation_id);
 
         if(result instanceof Error) return res.status(400).json(result.message);
 

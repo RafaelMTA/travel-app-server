@@ -3,8 +3,11 @@ import { AccommodationCreateService } from '@services/accommodation/create';
 
 export class AccommodationCreateController{
     handle = async(req: Request, res: Response) : Promise<Response> => {
-        const { user_id, event_id } = req.params;
+        const { event_id } = req.params;
         const { name, description, arrival, departure, address } = req.body;
+
+        const user_id = res.locals.userId;
+        if(!user_id) return res.status(404).json({error: 'No user auth'});
 
         const service = new AccommodationCreateService();
 
