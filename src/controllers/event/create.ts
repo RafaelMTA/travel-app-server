@@ -1,10 +1,13 @@
-import { Request, Response } from 'express';
-import { EventCreateService } from '@services/event/create';
+import { Request, Response } from "express";
+import { EventCreateService } from "@services/event/create";
 
 export class EventCreateController{
     handle = async(req: Request, res: Response) : Promise<Response> => {
-        const { user_id } = req.params;
+        // const { user_id } = req.params;
         const { name, description, start_date, end_date } = req.body;
+
+        const user_id = res.locals.userId;
+        if(!user_id) return res.status(404).json({error: 'No user auth'});
 
         const service = new EventCreateService();
 
