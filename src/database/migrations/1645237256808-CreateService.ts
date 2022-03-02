@@ -13,7 +13,7 @@ export class CreateService1645237256808 implements MigrationInterface {
                         isPrimary: true
                     },
                     {
-                        name: "name",
+                        name: "title",
                         type: "varchar",
                         length: "100"
                     },
@@ -25,12 +25,12 @@ export class CreateService1645237256808 implements MigrationInterface {
                     },
                     {
                         name: "arrival",
-                        type: "timestamp",
+                        type: "varchar",
                         isNullable: true
                     },
                     {
                         name: "departure",
-                        type: "timestamp",
+                        type: "varchar",
                         isNullable: true
                     },
                     {

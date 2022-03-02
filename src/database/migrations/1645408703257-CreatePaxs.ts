@@ -38,7 +38,7 @@ export class CreatePaxs1645408703257 implements MigrationInterface {
                     },
                     {
                         name: "birthday",
-                        type: "timestamp"
+                        type: "varchar"
                     },
                     {
                         name: "user_id",

@@ -3,6 +3,14 @@ import {Router} from "express";
 const routes = Router();
 //#endregion
 
+//#region Auth Routes
+import { SignInController } from "@controllers/auth/SignIn";
+import { SignUpController } from '@controllers/auth/SignUp';
+
+routes.post("/api/signin", new SignInController().handle);
+routes.post("/api/signup", new SignUpController().handle);
+//#endregion
+
 //#region Auth Middleware
 import auth from "@middlewares/auth";
 
@@ -93,9 +101,4 @@ routes.put("/api/event/:event_id/pax/:pax_id", new PaxUpdateController().handle)
 routes.delete("/api/event/:event_id/pax/:pax_id", new PaxDeleteController().handle);
 //#endregion
 
-//#region Auth Routes
-import { SignInController } from "@controllers/auth/SignIn";
-
-routes.post("/api/signin", new SignInController().handle);
-//#endregion
 export default routes;

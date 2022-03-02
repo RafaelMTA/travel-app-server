@@ -13,7 +13,7 @@ export class CreateEvent1645237146486 implements MigrationInterface {
                         isPrimary: true
                     },
                     {
-                        name: "name",
+                        name: "title",
                         type: "varchar",
                         length: "50"
                     },
@@ -29,11 +29,11 @@ export class CreateEvent1645237146486 implements MigrationInterface {
                     },
                     {
                         name: "start_date",
-                        type: "timestamp"
+                        type: "varchar"
                     },
                     {
                         name: "end_date",
-                        type: "timestamp"
+                        type: "varchar"
                     },
                     {
                         name: "user_id",
