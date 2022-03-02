@@ -7,7 +7,7 @@ export class PaxUpdateController{
         const { name, surname, email, occupation, address, birthday } = req.body;
 
         const user_id = res.locals.userId;
-        if(!user_id) return res.status(404).json({error: 'No user auth'});
+        if(!user_id) return res.status(405).json({error: 'No user auth'});
 
         const service = new PaxUpdateService();
 

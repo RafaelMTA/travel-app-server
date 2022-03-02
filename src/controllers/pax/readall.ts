@@ -4,11 +4,12 @@ import { PaxReadAllService } from "@services/pax/readall";
 export class PaxReadAllController{
     handle = async(req: Request, res: Response) : Promise<Response> => {
         const user_id = res.locals.userId;
-        if(!user_id) return res.status(404).json({error: 'No user auth'});
+        const { event_id } = req.params;
+        if(!user_id) return res.status(405).json({error: 'No user auth'});
 
         const service = new PaxReadAllService();
         
-        const result = await service.execute(user_id);
+        const result = await service.execute(user_id, event_id);
 
         if(result instanceof Error) return res.status(400).json(result.message);
 

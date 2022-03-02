@@ -6,7 +6,7 @@ export class TransportDeleteController{
         const {transport_id} = req.params;
 
         const user_id = res.locals.userId;
-        if(!user_id) return res.status(404).json({error: 'No user auth'});
+        if(!user_id) return res.status(405).json({error: 'No user auth'});
 
         const service = new TransportDeleteService();
 
