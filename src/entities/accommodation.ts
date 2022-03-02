@@ -8,13 +8,13 @@ export class Accommodation{
     @PrimaryColumn()
     id: string;
     @Column()
-    name: string;
+    title: string;
     @Column()
     description: string;
-    @CreateDateColumn()
-    arrival: Date;
-    @CreateDateColumn()
-    departure: Date;
+    @Column()
+    arrival: string;
+    @Column()
+    departure: string;
     @Column()
     address:string;
     @Column()
@@ -33,17 +33,17 @@ export class Accommodation{
     updated_at?: Date;
 
     constructor(
-        name:string, 
+        title:string, 
         description:string, 
         user_id:string, 
         event_id:string,
-        arrival:Date,
-        departure:Date,
+        arrival:string,
+        departure:string,
         address:string,
         id?:string)
     {
         !id ? this.id = crypto.randomUUID() : this.id = id;
-        this.name = name;
+        this.title = title;
         this.description = description;
         this.user_id = user_id;
         this.event_id = event_id;

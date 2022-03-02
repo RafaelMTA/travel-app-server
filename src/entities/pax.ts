@@ -17,8 +17,8 @@ export class Pax{
     occupation: string;
     @Column()
     address:string;
-    @CreateDateColumn()
-    birthday: Date;
+    @Column()
+    birthday: string;
     @Column()
     user_id: string;
     @ManyToOne(() => User)
@@ -40,7 +40,7 @@ export class Pax{
         email: string,
         occupation: string,
         address:string,
-        birthday: Date,
+        birthday: string,
         user_id:string, 
         event_id:string,       
         id?:string)

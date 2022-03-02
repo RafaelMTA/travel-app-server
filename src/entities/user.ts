@@ -19,6 +19,5 @@ export class User{
         this.email = email;
         this.password = password;       
         this.created_at = new Date(Date.now());     
-        this.updated_at = new Date(Date.now());
     }
 }

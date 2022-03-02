@@ -7,13 +7,13 @@ export class Event{
     @PrimaryColumn()
     id: string;
     @Column()
-    name: string;
+    title: string;
     @Column()
     description: string;
-    @CreateDateColumn()
-    start_date: Date;
-    @CreateDateColumn()
-    end_date: Date;
+    @Column()
+    start_date: string;
+    @Column()
+    end_date: string;
     @Column()
     user_id: string;
     @ManyToOne(() => User)
@@ -25,15 +25,15 @@ export class Event{
     updated_at?: Date;
 
     constructor(
-        name:string, 
+        title:string, 
         description:string, 
         user_id:string, 
-        start_date: Date,
-        end_date: Date,
+        start_date: string,
+        end_date: string,
         id?:string)
     {
         !id ? this.id = crypto.randomUUID() : this.id = id;
-        this.name = name;
+        this.title = title;
         this.description = description;
         this.user_id = user_id;
         this.start_date = start_date;
