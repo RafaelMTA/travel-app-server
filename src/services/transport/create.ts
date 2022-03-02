@@ -2,21 +2,24 @@ import { getRepository } from "typeorm";
 import { Transport } from "@entities/transport";
 
 type TransportRequest = {
-    name: string;
+    title: string;
     description: string;
-    arrival: Date,
-    departure: Date,
+    arrival: string,
+    departure: string,
     address: string;
     user_id: string;
     event_id: string;
 }
 
 export class TransportCreateService{
-    execute = async({name, description, arrival, departure, address, user_id, event_id} : TransportRequest) : Promise<Transport | Error> => {
+    execute = async({title, description, arrival, departure, address, user_id, event_id} : TransportRequest) : Promise<Transport | Error> => {
         const repository = getRepository(Transport);
         if(!repository) return new Error('No repository found');
 
-        const transport = repository.create({name, description, arrival, departure, address, user_id, event_id});
+        const exists = await repository.findOne({title, user_id, event_id});
+        if(exists) return new Error('Transport title already registed');
+
+        const transport = repository.create({title, description, arrival, departure, address, user_id, event_id});
 
         await repository.save(transport);
 

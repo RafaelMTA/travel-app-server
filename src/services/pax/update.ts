@@ -7,7 +7,7 @@ type PaxRequest = {
     email: string;
     occupation: string;
     address: string;
-    birthday: Date;
+    birthday: string;
     user_id: string;
     event_id: string;
 }

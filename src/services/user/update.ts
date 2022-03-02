@@ -5,11 +5,14 @@ import BCryptjs from "@handlers/BCryptjs";
 type UserRequest = {
     email: string;
     password: string;
+    confirmPassword:string;
 }
 
 export class UserUpdateService{
-    execute = async({email, password} : UserRequest, id:string) : Promise<User | Error> => {
+    execute = async({email, password, confirmPassword} : UserRequest, id:string) : Promise<User | Error> => {
         try{
+            if(password !== confirmPassword) return new Error("Password is not a match");
+
             const repository = getRepository(User);   
             if(!repository) return new Error('No repository found');
 

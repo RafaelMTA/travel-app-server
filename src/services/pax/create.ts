@@ -7,18 +7,19 @@ type PaxRequest = {
     email: string;
     occupation: string;
     address: string;
-    birthday: Date;
+    birthday: string;
     user_id: string;
     event_id: string;
 }
 
 export class PaxCreateService{
     execute = async({name, surname, email, occupation, address, birthday, user_id, event_id} : PaxRequest) : Promise<Pax | Error> => {
-        // if(start_date < new Date(Date.now())) return new Error('Invalid starting date');
-
         const repository = getRepository(Pax);
         if(!repository) return new Error('No repository found');
 
+        const exists = await repository.findOne({email, user_id, event_id});
+        if(exists) return new Error('Email already registed');
+        
         const pax = repository.create({name, surname, email, occupation, address, birthday, user_id, event_id});
 
         await repository.save(pax);

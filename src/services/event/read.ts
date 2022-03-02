@@ -9,7 +9,7 @@ export class EventReadService{
     
             const event = await repository.findOne({user_id, id});
             if(!event) return new Error('No event found');
-    
+
             return event;
         }catch(error){
             return new Error(`${error}`);

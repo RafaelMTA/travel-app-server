@@ -2,29 +2,29 @@ import { getRepository } from "typeorm";
 import { Transport } from "@entities/transport";
 
 type TransportRequest = {
-    name: string;
+    title: string;
     description: string;
-    arrival: Date;
-    departure: Date;
+    arrival: string;
+    departure: string;
     address: string;
     user_id: string;
     event_id: string;
 }
 
 export class TransportUpdateService{
-    execute = async({name, description, arrival, departure, address, user_id, event_id} : TransportRequest, id:string) : Promise<Transport | Error> => {
+    execute = async({title, description, arrival, departure, address, user_id, event_id} : TransportRequest, id:string) : Promise<Transport | Error> => {
         const repository = getRepository(Transport);   
         if(!repository) return new Error('No repository found');
 
         const transport = await repository.findOne({user_id, id});
         if(!transport) return new Error('No transport found');
 
-        if(transport.name !== name) {
-            const exists = await repository.findOne({name, user_id, event_id});
-            if(exists) return new Error('Transport name already registed');
+        if(transport.title !== title) {
+            const exists = await repository.findOne({title, user_id, event_id});
+            if(exists) return new Error('Transport title already registed');
         }
        
-        transport.name = name;
+        transport.title = title;
         transport.description = description;
         transport.arrival = arrival;
         transport.departure = departure;
