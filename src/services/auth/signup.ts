@@ -13,12 +13,14 @@ export class SignUpService{
         if(password !== confirmPassword) return new Error('Password does not match');
 
         const repository = getRepository(User);
-        if(!repository) return new Error('No repository found');
-        if(await repository.findOne({email})) return new Error('User already registered'); 
+        if(!repository) return new Error('No repository found');;
+
+        const exists = await repository.findOne({email});
+        if(exists) return new Error('User already registered'); 
 
         const hashedPassword = await BCryptjs.hash(password);
         if(!hashedPassword) return new Error('Could not hash password');
-        
+
         const user = repository.create(
             new User(email, hashedPassword)
         );
