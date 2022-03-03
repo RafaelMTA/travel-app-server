@@ -20,9 +20,11 @@ routes.use(auth);
 //#region User Routes
 import { UserReadController } from "@controllers/user/read";
 import { UserUpdateController } from "@controllers/user/update";
+import { UserDeleteController } from "@controllers/user/delete";
 
 routes.get("/api/users", new UserReadController().handle);
 routes.put("/api/users", new UserUpdateController().handle);
+routes.delete("/api/users", new UserDeleteController().handle);
 //#endregion
 
 //#region Event Routes
