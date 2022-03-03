@@ -3,12 +3,12 @@ import { UserUpdateService } from "@services/user/update";
 
 export class UserUpdateController{
     handle = async(req: Request, res: Response) : Promise<Response> => {
-        const { id } = req.params;
+        const user_id = res.locals.userId;
         const { email, password, confirmPassword } = req.body;
 
         const service = new UserUpdateService();
 
-        const result = await service.execute({email, password, confirmPassword}, id);
+        const result = await service.execute({email, password, confirmPassword}, user_id);
 
         if(result instanceof Error) return res.status(400).json(result.message);
 

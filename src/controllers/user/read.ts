@@ -3,11 +3,11 @@ import { UserReadService } from "@services/user/read";
 
 export class UserReadController{
     handle = async(req: Request, res: Response) : Promise<Response>=> {
-        const { id } = req.params;
+        const user_id = res.locals.userId;
 
         const service = new UserReadService();
 
-        const result = await service.execute(id);
+        const result = await service.execute(user_id);
 
         if(result instanceof Error) return res.status(400).json(result.message);
 
