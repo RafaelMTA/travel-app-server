@@ -7,7 +7,7 @@ export class User{
     id: string;
     @Column()
     email: string;
-    @Column({select: false})
+    @Column()
     password: string;
     @Column()
     imageURL:string;

@@ -21,12 +21,12 @@ export class Transport{
     user_id: string;
     @Column()
     imageURL:string;
-    @ManyToOne(() => User)
+    @ManyToOne(() => User, user => user.id, {onDelete: 'CASCADE'})
     @JoinColumn({ name: "user_id" })
     user?: User;
     @Column()
     event_id: string;
-    @ManyToOne(() => Event)
+    @ManyToOne(() => Event, event => event.id, {onDelete: 'CASCADE'})
     @JoinColumn({ name: "event_id" })
     event?: Event;
     @CreateDateColumn()

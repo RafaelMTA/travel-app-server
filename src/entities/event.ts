@@ -18,7 +18,7 @@ export class Event{
     imageURL:string;
     @Column()
     user_id: string;
-    @ManyToOne(() => User)
+    @ManyToOne(() => User, user => user.id, {onDelete: 'CASCADE'})
     @JoinColumn({ name: "user_id" })
     user?: User;
     @CreateDateColumn()
