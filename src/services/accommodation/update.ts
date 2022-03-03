@@ -7,12 +7,13 @@ type AccommodationRequest = {
     arrival: string;
     departure: string;
     address: string;
+    imageURL: string;
     user_id: string;
     event_id: string;
 }
 
 export class AccommodationUpdateService{
-    execute = async({title, description, arrival, departure, address, user_id, event_id} : AccommodationRequest, id:string) : Promise<Accommodation | Error> => {
+    execute = async({title, description, arrival, departure, address, imageURL, user_id, event_id} : AccommodationRequest, id:string) : Promise<Accommodation | Error> => {
         const repository = getRepository(Accommodation);   
         if(!repository) return new Error('No repository found');
 
@@ -29,6 +30,7 @@ export class AccommodationUpdateService{
         accommodation.arrival = arrival;
         accommodation.departure = departure;
         accommodation.address = address;
+        accommodation.imageURL = imageURL;
         accommodation.updated_at = new Date(Date.now());
         
         repository.save(accommodation);

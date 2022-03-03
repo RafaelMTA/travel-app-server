@@ -9,11 +9,12 @@ type PaxRequest = {
     address: string;
     birthday: string;
     user_id: string;
+    imageURL:string;
     event_id: string;
 }
 
 export class PaxUpdateService{
-    execute = async({name, surname, email, occupation, address, birthday, user_id, event_id} : PaxRequest, id:string) : Promise<Pax | Error> => {
+    execute = async({name, surname, email, occupation, address, birthday, user_id, imageURL, event_id} : PaxRequest, id:string) : Promise<Pax | Error> => {
         const repository = getRepository(Pax);   
         if(!repository) return new Error('No repository found');
 
@@ -31,6 +32,7 @@ export class PaxUpdateService{
         pax.occupation = occupation;
         pax.address = address;
         pax.birthday = birthday;
+        pax.imageURL = imageURL;
         pax.updated_at = new Date(Date.now());
         
         repository.save(pax);

@@ -6,11 +6,12 @@ type EventRequest = {
     description: string;
     start_date: string;
     end_date: string;
+    imageURL: string;
     user_id: string;
 }
 
 export class EventUpdateService{
-    execute = async({title, description, start_date, end_date, user_id} : EventRequest, id:string) : Promise<Event | Error> => {
+    execute = async({title, description, start_date, end_date, imageURL, user_id} : EventRequest, id:string) : Promise<Event | Error> => {
         const repository = getRepository(Event);   
         if(!repository) return new Error('No repository found');
 
@@ -26,6 +27,7 @@ export class EventUpdateService{
         event.description = description;
         event.start_date = start_date;
         event.end_date = end_date;
+        event.imageURL = imageURL;
         event.updated_at = new Date(Date.now());
         
         repository.save(event);

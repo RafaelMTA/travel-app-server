@@ -16,7 +16,7 @@ export class User{
     @CreateDateColumn()
     updated_at?: Date;
 
-    constructor(email:string, password:string, imageURL: string, id?:string){
+    constructor(email:string, password:string, imageURL?: string, id?:string){
         !id ? this.id = crypto.randomUUID() : this.id = id;
         this.email = email;
         this.password = password;       

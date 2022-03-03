@@ -18,17 +18,11 @@ routes.use(auth);
 //#endregion
 
 //#region User Routes
-import { UserReadAllController } from "@controllers/user/readall";
-import { UserCreateController } from "@controllers/user/create";
 import { UserReadController } from "@controllers/user/read";
 import { UserUpdateController } from "@controllers/user/update";
-import { UserDeleteController } from "@controllers/user/delete";
 
-routes.get("/api/users", new UserReadAllController().handle);
-routes.post("/api/users", new UserCreateController().handle);
 routes.get("/api/users/:id", new UserReadController().handle);
 routes.put("/api/users/:id", new UserUpdateController().handle);
-routes.delete("/api/users/:id", new UserDeleteController().handle);
 //#endregion
 
 //#region Event Routes

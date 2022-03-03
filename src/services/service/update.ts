@@ -7,12 +7,13 @@ type ServiceRequest = {
     arrival: string;
     departure: string;
     address: string;
+    imageURL: string;
     user_id: string;
     event_id: string;
 }
 
 export class ServiceUpdateService{
-    execute = async({title, description, arrival, departure, address, user_id, event_id} : ServiceRequest, id:string) : Promise<Service | Error> => {
+    execute = async({title, description, arrival, departure, address, imageURL, user_id, event_id} : ServiceRequest, id:string) : Promise<Service | Error> => {
         const repository = getRepository(Service);   
         if(!repository) return new Error('No repository found');
 
@@ -29,6 +30,7 @@ export class ServiceUpdateService{
         service.arrival = arrival;
         service.departure = departure;
         service.address = address;
+        service.imageURL = imageURL;
         service.updated_at = new Date(Date.now());
         
         repository.save(service);
