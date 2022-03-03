@@ -19,6 +19,8 @@ export class Transport{
     address:string;
     @Column()
     user_id: string;
+    @Column()
+    imageURL:string;
     @ManyToOne(() => User)
     @JoinColumn({ name: "user_id" })
     user?: User;
@@ -40,6 +42,7 @@ export class Transport{
         arrival:string,
         departure:string,
         address:string,
+        imageURL:string,
         id?:string)
     {
         !id ? this.id = crypto.randomUUID() : this.id = id;
@@ -50,6 +53,7 @@ export class Transport{
         this.arrival = arrival;
         this.departure = departure;
         this.address = address;
+        this.imageURL = imageURL;
         this.created_at = new Date(Date.now());
     }
 }

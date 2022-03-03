@@ -41,6 +41,11 @@ export class CreatePaxs1645408703257 implements MigrationInterface {
                         type: "varchar"
                     },
                     {
+                        name: "imageURL",
+                        type: "varchar",
+                        isNullable: true
+                    },
+                    {
                         name: "user_id",
                         type: "uuid",
                     },

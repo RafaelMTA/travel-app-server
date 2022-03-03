@@ -18,6 +18,8 @@ export class Accommodation{
     @Column()
     address:string;
     @Column()
+    imageURL:string;
+    @Column()
     user_id: string;
     @ManyToOne(() => User)
     @JoinColumn({ name: "user_id" })
@@ -40,6 +42,7 @@ export class Accommodation{
         arrival:string,
         departure:string,
         address:string,
+        imageURL:string,
         id?:string)
     {
         !id ? this.id = crypto.randomUUID() : this.id = id;

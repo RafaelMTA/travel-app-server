@@ -39,6 +39,11 @@ export class CreateTransport1645237184579 implements MigrationInterface {
                         isNullable: true 
                     },   
                     {
+                        name: "imageURL",
+                        type: "varchar",
+                        isNullable: true
+                    },
+                    {
                         name: "user_id",
                         type: "uuid"
                     },

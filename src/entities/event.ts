@@ -15,6 +15,8 @@ export class Event{
     @Column()
     end_date: string;
     @Column()
+    imageURL:string;
+    @Column()
     user_id: string;
     @ManyToOne(() => User)
     @JoinColumn({ name: "user_id" })
@@ -30,6 +32,7 @@ export class Event{
         user_id:string, 
         start_date: string,
         end_date: string,
+        imageURL:string,
         id?:string)
     {
         !id ? this.id = crypto.randomUUID() : this.id = id;

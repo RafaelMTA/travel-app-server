@@ -39,6 +39,11 @@ export class CreateAccommodations1645237231556 implements MigrationInterface {
                         isNullable: true 
                     },
                     {
+                        name: "imageURL",
+                        type: "varchar",
+                        isNullable: true
+                    },
+                    {
                         name: "user_id",
                         type: "uuid"
                     },

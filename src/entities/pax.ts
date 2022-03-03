@@ -20,6 +20,8 @@ export class Pax{
     @Column()
     birthday: string;
     @Column()
+    imageURL:string;
+    @Column()
     user_id: string;
     @ManyToOne(() => User)
     @JoinColumn({ name: "user_id" })
@@ -42,7 +44,8 @@ export class Pax{
         address:string,
         birthday: string,
         user_id:string, 
-        event_id:string,       
+        event_id:string,    
+        imageURL:string,   
         id?:string)
     {
         !id ? this.id = crypto.randomUUID() : this.id = id;

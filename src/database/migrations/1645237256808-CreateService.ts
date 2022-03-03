@@ -39,6 +39,11 @@ export class CreateService1645237256808 implements MigrationInterface {
                         isNullable: true 
                     },
                     {
+                        name: "imageURL",
+                        type: "varchar",
+                        isNullable: true
+                    },
+                    {
                         name: "user_id",
                         type: "uuid"
                     },
