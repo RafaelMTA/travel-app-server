@@ -35,6 +35,8 @@ export class UserUpdateService{
                 }
             }          
             
+            console.log(imageURL);
+
             user.email = email;
             user.imageURL = imageURL;
             user.updated_at = new Date(Date.now());

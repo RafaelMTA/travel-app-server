@@ -1,4 +1,4 @@
-import { Entity, Column, CreateDateColumn, PrimaryColumn } from "typeorm";
+import { Entity, Column, CreateDateColumn, PrimaryColumn, Exclusion } from "typeorm";
 import crypto from "crypto";
 
 @Entity("users")
@@ -7,7 +7,7 @@ export class User{
     id: string;
     @Column()
     email: string;
-    @Column()
+    @Column({select: false})
     password: string;
     @Column()
     imageURL:string;
