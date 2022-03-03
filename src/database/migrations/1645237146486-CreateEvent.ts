@@ -60,7 +60,8 @@ export class CreateEvent1645237146486 implements MigrationInterface {
                         name: "fk_events_user",
                         columnNames: ["user_id"],
                         referencedTableName: "users",
-                        referencedColumnNames: ["id"]
+                        referencedColumnNames: ["id"],
+                        onDelete: "CASCADE"
                     }
                 ]
             })

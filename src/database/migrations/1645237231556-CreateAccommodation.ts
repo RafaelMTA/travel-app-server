@@ -67,13 +67,15 @@ export class CreateAccommodations1645237231556 implements MigrationInterface {
                         name: "fk_accommodations_user",
                         columnNames: ["user_id"],
                         referencedTableName: "users",
-                        referencedColumnNames: ["id"]
+                        referencedColumnNames: ["id"],
+                        onDelete: "CASCADE"
                     },
                     {
                         name: "fk_accommodations_event",
                         columnNames: ["event_id"],
                         referencedTableName: "events",
-                        referencedColumnNames: ["id"]
+                        referencedColumnNames: ["id"],
+                        onDelete: "CASCADE"
                     }
                 ]
             })

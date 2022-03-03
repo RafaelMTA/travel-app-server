@@ -69,13 +69,15 @@ export class CreatePaxs1645408703257 implements MigrationInterface {
                         name: "fk_paxs_user",
                         columnNames: ["user_id"],
                         referencedTableName: "users",
-                        referencedColumnNames: ["id"]
+                        referencedColumnNames: ["id"],
+                        onDelete: "CASCADE"
                     },
                     {
                         name: "fk_paxs_event",
                         columnNames: ["event_id"],
                         referencedTableName: "events",
-                        referencedColumnNames: ["id"]
+                        referencedColumnNames: ["id"],
+                        onDelete: "CASCADE"
                     }
                 ]
             })

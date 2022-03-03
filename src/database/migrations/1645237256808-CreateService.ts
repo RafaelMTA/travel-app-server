@@ -67,13 +67,15 @@ export class CreateService1645237256808 implements MigrationInterface {
                         name: "fk_services_user",
                         columnNames: ["user_id"],
                         referencedTableName: "users",
-                        referencedColumnNames: ["id"]
+                        referencedColumnNames: ["id"],
+                        onDelete: "CASCADE"
                     },
                     {
                         name: "fk_services_event",
                         columnNames: ["event_id"],
                         referencedTableName: "events",
-                        referencedColumnNames: ["id"]
+                        referencedColumnNames: ["id"],
+                        onDelete: "CASCADE"
                     }
                 ]
             })

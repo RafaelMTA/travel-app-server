@@ -67,13 +67,15 @@ export class CreateTransport1645237184579 implements MigrationInterface {
                         name: "fk_transports_user",
                         columnNames: ["user_id"],
                         referencedTableName: "users",
-                        referencedColumnNames: ["id"]
+                        referencedColumnNames: ["id"],
+                        onDelete: "CASCADE"
                     },
                     {
                         name: "fk_transports_event",
                         columnNames: ["event_id"],
                         referencedTableName: "events",
-                        referencedColumnNames: ["id"]
+                        referencedColumnNames: ["id"],
+                        onDelete: "CASCADE"
                     }
                 ]
             })
