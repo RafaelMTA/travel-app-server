@@ -6,10 +6,11 @@ type UserRequest = {
     email: string;
     password: string;
     confirmPassword:string;
+    imageURL: string;
 }
 
 export class UserUpdateService{
-    execute = async({email, password, confirmPassword} : UserRequest, id:string) : Promise<User | Error> => {
+    execute = async({email, password, confirmPassword, imageURL} : UserRequest, id:string) : Promise<User | Error> => {
         try{
             if(password !== confirmPassword) return new Error("Password is not a match");
 
@@ -24,15 +25,18 @@ export class UserUpdateService{
                 if(exists) return new Error('User already registed');
             } 
 
-            //Check if password is the same
-            const validate = await BCryptjs.validate(password, user.password);
-            if(!validate) { 
-                const hashedPassword = await BCryptjs.hash(password); 
-                if(!hashedPassword) return new Error('Error on password Hash');
-                user.password = hashedPassword;
-            }
+            if(!password || password !== ""){
+                //Check if password is the same
+                const validate = await BCryptjs.validate(password, user.password);
+                if(!validate) { 
+                    const hashedPassword = await BCryptjs.hash(password); 
+                    if(!hashedPassword) return new Error('Error on password Hash');
+                    user.password = hashedPassword;
+                }
+            }          
             
             user.email = email;
+            user.imageURL = imageURL;
             user.updated_at = new Date(Date.now());
             
             repository.save(user);

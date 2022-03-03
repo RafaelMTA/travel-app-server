@@ -21,8 +21,8 @@ routes.use(auth);
 import { UserReadController } from "@controllers/user/read";
 import { UserUpdateController } from "@controllers/user/update";
 
-routes.get("/api/users/:id", new UserReadController().handle);
-routes.put("/api/users/:id", new UserUpdateController().handle);
+routes.get("/api/users", new UserReadController().handle);
+routes.put("/api/users", new UserUpdateController().handle);
 //#endregion
 
 //#region Event Routes
