@@ -7,3 +7,14 @@ Back-End para o projeto de gerenciamento de Eventos(travel-app-client)
 # ORM
 * Type-ORM
 
+---------------------------------------------------------------------------------------------------
+
+# Project
+Back-End for the event management project(travel-app-client)
+# Main Technologies
+* Express
+* Typescript
+* Postgres
+# ORM
+* Type-ORM
+
